@@ -1,5 +1,4 @@
 import { Navigate } from 'react-router-dom'
-import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useAuth } from '../hooks/use-auth'
 import { removeUser } from '../store/slice/userSlice'
@@ -15,7 +14,7 @@ const HomePage = () => {
                     </button>
                     </div>
      ) : (
-               <Navigate replace to='/login' />
+               <Navigate replace to='/homepage' />
      )
 }
 

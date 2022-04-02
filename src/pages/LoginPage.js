@@ -19,7 +19,6 @@ const LoginPage = () => {
      //      }
      // }
      return ( 
-          <Login />
           // <div className="aaa">
           //      <container className='header'>
           //           <div className="company">
@@ -50,6 +49,14 @@ const LoginPage = () => {
                </p>
 
           </div> */
+          <div>
+               <h1>Login</h1>
+          <Login />
+          <p>
+               Or <Link to="/register">register</Link>
+          </p>
+          </div>
+
      )
 }
 

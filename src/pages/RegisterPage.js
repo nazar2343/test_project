@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import React from 'react'
 import { SignUp } from "../components/SingUp"
 
 
@@ -11,7 +10,6 @@ const RegisterPage = () => {
                <p>
                     Already have an account? <Link to='/login'>Sign in</Link>
                </p>
-
           </div>
      )
 }
