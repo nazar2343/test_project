@@ -1,12 +1,21 @@
-import {Navigate} from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useAuth } from '../hooks/use-auth'
+import { removeUser } from '../store/slice/userSlice'
 
 const HomePage = () => {
-     return (
+     const dispatch = useDispatch();
+     const { isAuth, email } = useAuth();
+     return isAuth ? (
           <div>
-          <Navigate replace to='/login'/>
-          </div>
-     
+               <h1>Welcome</h1>
+               <button onClick={() => dispatch(removeUser())}>
+                    Log out from {email}
+                    </button>
+                    </div>
+     ) : (
+               <Navigate replace to='/login' />
      )
 }
 

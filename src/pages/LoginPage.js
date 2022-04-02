@@ -1,7 +1,6 @@
 import { Link, Route } from "react-router-dom"
 import React from 'react'
 import './LoginPage.css';
-import { user } from "../db";
 import { useState, useEffect } from "react";
 import HomePage from "./HomePage";
 import { Login } from "../components/Login";
