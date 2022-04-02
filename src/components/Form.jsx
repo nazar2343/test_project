@@ -1,8 +1,18 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Form = ({title, handleClick}) => {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    // const [get, setGet] = useState('')
+
+    // useEffect(() => {
+    //     axios.get(`https://jsonplaceholder.typicode.com/${get}`)
+    //     .then(res => {
+    //         setGet(res.data)
+    //     }, [get])
+    // })
+
     return (
         <div>
             <input

@@ -19,7 +19,7 @@ const SignUp = () => {
                     id: user.id,
                     token: user.token,
                 }));
-                push('/');
+                push('/homePage');
             })
             .catch(console.error)
     }
