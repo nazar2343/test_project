@@ -1,17 +1,19 @@
-// import { Link } from "react-router-dom"
-// import React from 'react'
+import { Link } from "react-router-dom"
+import React from 'react'
+import { SignUp } from "../components/SingUp"
 
 
-// const RegisterPage = () => {
-//      return (
-//           <div>
-//                <h1>Register</h1>
-//                <p>
-//                     Already have an account? <Link to='/login'>Sign in</Link>
-//                </p>
+const RegisterPage = () => {
+     return (
+          <div>
+               <h1>Register</h1>
+               <SignUp />
+               <p>
+                    Already have an account? <Link to='/login'>Sign in</Link>
+               </p>
 
-//           </div>
-//      )
-// }
+          </div>
+     )
+}
 
-// export default RegisterPage
+export default RegisterPage
