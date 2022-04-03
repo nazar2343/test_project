@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Form = ({title, handleClick}) => {
+const Form = ({ title, handleClick }) => {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     // const [get, setGet] = useState('')
@@ -27,7 +27,9 @@ const Form = ({title, handleClick}) => {
                 onChange={(e) => setPass(e.target.value)}
                 placeholder='password'
             />
-            <button onClick={() => handleClick(email, pass)}>
+            <button
+                onClick={() => handleClick(email, pass)}
+            >
                 {title}
             </button>
         </div>

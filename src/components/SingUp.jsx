@@ -16,10 +16,10 @@ const SignUp = () => {
                 console.log(user)
                 dispatch(setUser({
                     email: user.email,
-                    id: user.id,
-                    token: user.token,
+                    id: user.uid,
+                    token: user.accessToken,
                 }));
-                push('/homePage');
+                push('/');
             })
             .catch(console.error)
     }

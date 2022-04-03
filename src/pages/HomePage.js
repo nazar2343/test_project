@@ -14,7 +14,7 @@ const HomePage = () => {
                     </button>
                     </div>
      ) : (
-               <Navigate replace to='/homepage' />
+               <Navigate replace to='/login' />
      )
 }
 
