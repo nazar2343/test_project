@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import '../index.scss'
 import Header from "./Header";
 import {Block} from "./Block";
@@ -39,7 +39,7 @@ function Convert() {
 
     const onChangeToPrice = (value) => {
         const result = (ratesRef.current[fromCurrency] / ratesRef.current[toCurrency]) * value;
-        setFromPrice(result)
+        setFromPrice((Math.round(parseFloat(result) * 100) / 100))
         setToPrice(value)
     }
 
