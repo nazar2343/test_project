@@ -48,7 +48,7 @@ export default function Header() {
                 </Typography>
                 <Typography variant="h6"
                             component="div" sx={{flexGrow: 25}}>
-                    {toPriceEur}€ : {fromPriceUahWithEur.toFixed(3)}UAH
+                    {toPriceEur}€ = {fromPriceUahWithEur.toFixed(3)}UAH
                 </Typography>
             </Toolbar>
         </AppBar>
