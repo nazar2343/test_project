@@ -1,63 +1,62 @@
-import React, {useEffect, useState} from 'react';
-import './index.scss';
-import { Success } from './components/Success';
-import { Users } from './components/Users';
+import React, { PureComponent } from "react";
+import smoothscroll from "smoothscroll-polyfill";
+import "./App.css";
+import "dhx-suite/codebase/suite.min.css";
 
-// Тут список пользователей: https://reqres.in/api/users
+import { isEqual } from "lodash";
 
-function App() {
-    const [users, setUsers] = useState([])
-    const [isLoading, setLoading] = useState(false)
-    const [searchValue, setSearchValue] = useState('')
-    const [invites, setInvites] = useState([])
-    const [success, setSuccess] = useState(false)
+import GridPage from "./grid/GridPage";
 
-    useEffect(() => {
-        fetch('https://reqres.in/api/users')
-            .then((res) => res.json())
-            .then((json) => {
-                setUsers(json.data)
-            }).catch((error) => {
-                console.log(error)
-               alert('Виникла помилка')
-        }).finally(() => setLoading(false))
-    }, [])
-
-    const onChangeSearchValue = (e) => {
-        setSearchValue(e.target.value)
-    }
-
-    const onClickInvite = (id) => {
-        if(invites.includes(id)) {
-            setInvites(prev => prev.filter((_id) => _id !== id))
-        } else {
-            setInvites(prev => [...prev, id])
-        }
-    }
-
-    const onClickSendInvites = () => {
-        setSuccess(true)
-    }
-
+class App extends PureComponent {
+	constructor(props) {
+		super(props);
+		smoothscroll.polyfill();
+		this.state = {
+			toolbarNav: [],
+			activeExampleId: "",
+		};
+	}
+	componentDidUpdate() {
+		let activeHrefPart = window.location.href.split("/").pop();
+		let activeHrefPartCapitalize = activeHrefPart.charAt(0).toUpperCase() + activeHrefPart.slice(1);
+		if (this.state.activeWidget !== activeHrefPartCapitalize) {
+			this.setState({
+				activeWidget: activeHrefPartCapitalize,
+			});
+		}
+	}
+	setToolBarNavItems(array) {
+		if (!isEqual(array, this.state.toolbarNav)) {
+			this.setState({
+				toolbarNav: array,
+			});
+		}
+	}
+	setActiveExapmle(id) {
+		let elHash = "#" + id;
+		const el = this.el.querySelector(elHash);
+		const mainY = el.getBoundingClientRect().top + this.el.querySelector("main").scrollTop;
+		this.el.querySelector("main").scroll({
+			top: mainY - 57,
+			behavior: "smooth",
+			inline: "center",
+		});
+	}
+	render() {
     return (
-        <div className="App">
-            {
-                success ?
-                     <Success count={invites.length}/>
-                    :
-                    <Users onChangeSearchValue={onChangeSearchValue}
-                           searchValue={searchValue}
-                           items={users}
-                           isLoading={isLoading}
-                           invites={invites}
-                           onClickInvite={onClickInvite}
-                           onClickSendInvites={onClickSendInvites}
-                    />
-
-            }
-
-        </div>
-    );
+				<div
+					className="app-screen"
+					style={{ minHeight: "100vh", maxHeight: "100vh", display: "flex", overflow: "hidden" }}
+				>
+										<GridPage
+											handleToolbarNavItems={array => this.setToolBarNavItems(array)}
+											setActiveExapmle={(id, formObserver) =>
+												this.setActiveExapmle(id, formObserver)
+											}
+										/>
+				</div>
+		);
+	}
 }
 
 export default App;
