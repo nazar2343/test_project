@@ -4,11 +4,15 @@ import { Grid as GridDHX, DataCollection } from "dhx-suite";
 
 class Grid extends Component {
 	componentDidMount() {
-      this.grid = new GridDHX(this.el, {
+		this.grid = new GridDHX(this.el, {
 			columns: [
 				{ minWidth: 200, id: "country", header: [{ text: "Country" }] },
 				{ minWidth: 125, id: "population", header: [{ text: "Population" }] },
-				{ minWidth: 125, id: "yearlyChange", header: [{ text: "Yearly Change" }] },
+				{
+					minWidth: 125,
+					id: "yearlyChange",
+					header: [{ text: "Yearly Change" }],
+				},
 				{ minWidth: 125, id: "netChange", header: [{ text: "Net Change" }] },
 				{ minWidth: 125, id: "destiny", header: [{ text: "Density (P/Km²)" }] },
 				{ minWidth: 125, id: "area", header: [{ text: "Land Area (Km²)" }] },
@@ -19,31 +23,38 @@ class Grid extends Component {
 			],
 			adjust: true,
 			autoWidth: true,
-      autoHeight: true,
-      resizable: true,
-      dragMode: "both",
-      editable: true
+			autoHeight: true,
+			resizable: true,
+			dragMode: "both",
+			editable: true,
 		});
 		this.grid.data.load(`${process.env.PUBLIC_URL}/static/grid.json`);
-    const state = this.grid.data.serialize();
-    console.log(localStorage.setItem('dataKey', JSON.stringify(state)));
-    console.log('xyj', localStorage.getItem('dataKey'))
-  }
+		const state = this.grid.data.serialize();
+		localStorage.setItem("dataKey", JSON.stringify(state));
+		localStorage.getItem("dataKey");
+	}
 
-  componentWillUnmount() {
+	componentWillUnmount() {
 		this.grid && this.grid.destructor();
 	}
 
 	render() {
-    // console.log('xyj',localStorage.getItem("dataKey"));
-		return <div style={{ width: "100%", height: "450px" }} ref={el => (this.el = el)}></div>;
+		return (
+			<div
+				style={{ width: "100%", height: "450px" }}
+				ref={(el) => (this.el = el)}
+			></div>
+		);
 	}
 }
 
 Grid.propTypes = {
 	columns: PropTypes.array,
 	spans: PropTypes.array,
-	data: PropTypes.oneOfType([PropTypes.array, PropTypes.instanceOf(DataCollection)]),
+	data: PropTypes.oneOfType([
+		PropTypes.array,
+		PropTypes.instanceOf(DataCollection),
+	]),
 	headerRowHeight: PropTypes.number,
 	footerRowHeight: PropTypes.number,
 	rowHeight: PropTypes.number,

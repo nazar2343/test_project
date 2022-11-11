@@ -18,7 +18,8 @@ class App extends PureComponent {
 	}
 	componentDidUpdate() {
 		let activeHrefPart = window.location.href.split("/").pop();
-		let activeHrefPartCapitalize = activeHrefPart.charAt(0).toUpperCase() + activeHrefPart.slice(1);
+		let activeHrefPartCapitalize =
+			activeHrefPart.charAt(0).toUpperCase() + activeHrefPart.slice(1);
 		if (this.state.activeWidget !== activeHrefPartCapitalize) {
 			this.setState({
 				activeWidget: activeHrefPartCapitalize,
@@ -35,7 +36,8 @@ class App extends PureComponent {
 	setActiveExapmle(id) {
 		let elHash = "#" + id;
 		const el = this.el.querySelector(elHash);
-		const mainY = el.getBoundingClientRect().top + this.el.querySelector("main").scrollTop;
+		const mainY =
+			el.getBoundingClientRect().top + this.el.querySelector("main").scrollTop;
 		this.el.querySelector("main").scroll({
 			top: mainY - 57,
 			behavior: "smooth",
@@ -43,18 +45,23 @@ class App extends PureComponent {
 		});
 	}
 	render() {
-    return (
-				<div
-					className="app-screen"
-					style={{ minHeight: "100vh", maxHeight: "100vh", display: "flex", overflow: "hidden" }}
-				>
-										<GridPage
-											handleToolbarNavItems={array => this.setToolBarNavItems(array)}
-											setActiveExapmle={(id, formObserver) =>
-												this.setActiveExapmle(id, formObserver)
-											}
-										/>
-				</div>
+		return (
+			<div
+				className="app-screen"
+				style={{
+					minHeight: "100vh",
+					maxHeight: "100vh",
+					display: "flex",
+					overflow: "hidden",
+				}}
+			>
+				<GridPage
+					handleToolbarNavItems={(array) => this.setToolBarNavItems(array)}
+					setActiveExapmle={(id, formObserver) =>
+						this.setActiveExapmle(id, formObserver)
+					}
+				/>
+			</div>
 		);
 	}
 }
