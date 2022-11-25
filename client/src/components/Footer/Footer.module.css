@@ -1,0 +1,14 @@
+footer {
+  margin-top: auto;
+}
+
+.footer__text {
+  text-align: center;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 480px) {
+  .footer__text {
+    font-size: 12px;
+  }
+}

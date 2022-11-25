@@ -1,0 +1,96 @@
+.table__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-top: 1px solid #e8eaed;
+}
+
+.table__row > td {
+  width: 10%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.table__row > td:first-child {
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.table__row > td:last-child {
+  width: auto;
+}
+
+.ticker {
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.positive {
+  color: #137333;
+  background: #e6f4ea;
+  border-radius: 8px;
+}
+
+.negative {
+  color: rgb(153, 0, 0);
+  background: #d88c8c;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 1000px) {
+  .table__row > td:last-child {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .table__row > td {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .table__row > td:nth-child(7) {
+    display: none;
+  }
+
+  .table__row > td {
+    width: 15%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .table__row > td {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .table__row > td:nth-child(4) {
+    display: none;
+  }
+
+  .table__row > td {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .table__row > td:nth-child(6) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .table__row > td {
+    width: 25%;
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .table__row > td:first-child {
+    display: none;
+  }
+}
